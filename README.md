@@ -2,7 +2,7 @@
 
 ### Description
 
-* Visual Studio extensions allows a developer to build custom functionality into Visual Studio.
+* Visual Studio extensions allows a developer to build custom functionality into Visual Studio. Visual Studio extension pack is a way of grouping multiple extensions together so that they can be installed with one click instead of installed individually. Extensibility essentials is an example of an extension pack. You can find the extensions/extension packs of this repository on marketplace. It has been made private so you will need to login in as the owner.
 
 ### Dependencies
 
