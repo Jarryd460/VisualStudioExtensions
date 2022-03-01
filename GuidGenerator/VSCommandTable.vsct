@@ -1,37 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <Extern href="stdidcmd.h"/>
-  <Extern href="vsshlids.h"/>
-  <Include href="KnownImageIds.vsct"/>
-  <Include href="VSGlobals.vsct"/>
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+	<Include href="KnownImageIds.vsct"/>
+	<Include href="VSGlobals.vsct"/>
 
-  <Commands package="GuidGenerator">
-    <Groups>
-      <Group guid="GuidGenerator" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="VSMainMenu" id="Tools"/>
-      </Group>
-    </Groups>
+	<Commands package="GuidGenerator">
+		<Groups>
+			<!--Creates a group so that commands that below to this group will be displayed at the specified location -->
+			<Group guid="GuidGenerator" id="MyMenuGroup" priority="0x0600">
+				<!--Commands in this group will be displayed in Edit menu within Visual Studio-->
+				<Parent guid="VSMainMenu" id="Edit"/>
+			</Group>
+		</Groups>
 
-    <!--This section defines the elements the user can interact with, like a menu command or a button
+		<!--This section defines the elements the user can interact with, like a menu command or a button
         or combo box in a toolbar. -->
-    <Buttons>
-      <Button guid="GuidGenerator" id="MyCommand" priority="0x0100" type="Button">
-        <Parent guid="GuidGenerator" id="MyMenuGroup" />
-        <Icon guid="ImageCatalogGuid" id="StatusInformation" />
-        <CommandFlag>IconIsMoniker</CommandFlag>
-        <Strings>
-          <ButtonText>My Command</ButtonText>
-          <LocCanonicalName>.GuidGenerator.MyCommand</LocCanonicalName>
-        </Strings>
-      </Button>
-    </Buttons>
-  </Commands>
+		<Buttons>
+			<!--Specifies the commands and the groups they belong to as well as the text that will be displayed in the menu
+			for the command-->
+			<Button guid="GuidGenerator" id="InsertGUIDCommand" priority="0x0100" type="Button">
+				<Parent guid="GuidGenerator" id="MyMenuGroup" />
+				<Icon guid="ImageCatalogGuid" id="PasteAppend" />
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Insert Guid</ButtonText>
+					<LocCanonicalName>.Edit.InsertGuid</LocCanonicalName>
+				</Strings>
+			</Button>
+			<Button guid="GuidGenerator" id="OpenGUIDWindow" priority="0x0100" type="Button">
+				<Parent guid="VSMainMenu" id="View.DevWindowsGroup.OtherWindows.Group1" />
+				<Icon guid="ImageCatalogGuid" id="PasteAppend" />
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Insert Guid Window</ButtonText>
+					<LocCanonicalName>.View.InsertGuidWindow</LocCanonicalName>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
 
-  <Symbols>
-    <GuidSymbol name="GuidGenerator" value="{b6afaf4a-4e5e-4545-8a61-a4fb954158c3}">
-      <IDSymbol name="MyMenuGroup" value="0x0001" />
-      <IDSymbol name="MyCommand" value="0x0100" />
-    </GuidSymbol>
-  </Symbols>
+	<Symbols>
+		<!--The IDs of commands which will be used to map what is specified here with the classes that should be executed-->
+		<GuidSymbol name="GuidGenerator" value="{b6afaf4a-4e5e-4545-8a61-a4fb954158c3}">
+			<IDSymbol name="MyMenuGroup" value="0x0001" />
+			<IDSymbol name="InsertGUIDCommand" value="0x0100" />
+			<IDSymbol name="OpenGUIDWindow" value="0x0200" />
+		</GuidSymbol>
+	</Symbols>
 </CommandTable>
